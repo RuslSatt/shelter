@@ -1,0 +1,49 @@
+//=================== Adaptive-value ===============================================//
+$maxWidthAv: 85; // 1280 / 15 = 85rem
+$maxWidthContainerAv: 61.5; // 1200 / 15 = 61.5rem
+
+@mixin adaptive-value($property, $startSize, $minSize, $type) {
+   $startSize: $startSize / 16;
+   $minSize: $minSize / 16;
+   $addSize: $startSize - $minSize;
+   @if $type == lessContainerRem {
+      // Меньше контейнера //
+      #{$property}: $startSize  + rem;
+      @media (max-width: #{$maxWidthContainerAv + rem}) {
+         #{$property}: calc(#{$minSize + rem} + #{$addSize} * ((100vw - 20rem) / #{$maxWidthContainerAv - 20}));
+      }
+   } @else if $type == 1em {
+      // Меньше контейнера //
+      #{$property}: $startSize + em;
+      @media (max-width: #{$maxWidthContainerAv + em}) {
+         #{$property}: calc(#{$minSize + em} + #{$addSize} * ((100vw - 20em) / #{$maxWidthContainerAv - 20}));
+      }
+   } @else if $type == moreContainerRem {
+      // Больше контейнера //
+      #{$property}: $startSize + rem;
+      @media (min-width: #{$maxWidthContainerAv + rem}) {
+         #{$property}: calc(#{$minSize + rem} + #{$addSize} * ((100vw - 20rem) / #{$maxWidthAv - 20}));
+      }
+   } @else if $type == allContainerRem {
+      // В любом случае //
+      #{$property}: calc(#{$minSize + rem} + #{$addSize} * ((100vw - 20rem) / #{$maxWidthAv - 20}));
+   } @else if $type == 3em {
+      // В любом случае //
+      #{$property}: calc(#{$minSize + em} + #{$addSize} * ((100vw - 20em) / #{$maxWidthAv - 20}));
+   }
+}
+
+//=================== REM-EM ===============================================//
+$html-font-size: 16px;
+@function stripUnit($value) {
+   @return $value / ($value * 0 + 1);
+}
+@function rem($pxValue) {
+   @return #{stripUnit($pxValue) / stripUnit($html-font-size)}rem;
+}
+@function em($pxValue) {
+   @return #{stripUnit($pxValue) / stripUnit($html-font-size)}em;
+}
+
+// @include adaptive-value ("font-size", 3.4375, 2.8125, lessContainerRem);
+// rem(...) em(...)

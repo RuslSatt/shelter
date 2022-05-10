@@ -1,0 +1,36 @@
+//============buttons===========//
+%buttons {
+  display: inline-block;
+  background: $backgroundGoldenIcon;
+  padding: rem(17) rem(45);
+  border-radius: rem(100);
+  color: $colorBtn;
+  letter-spacing: 0.06em;
+  font-size: rem(17);
+  transition: 0.3s ease;
+  @media (min-width: $mW4) {
+    &:hover {
+      background: #FDDCC4;
+    }
+  }
+}
+%buttons-learn {
+  background: $backgroundWhiteColor;
+  border: 2px solid #F1CDB3;
+  padding: rem(15) rem(45);
+  border-radius: rem(100);
+  color: $colorBtn;
+  letter-spacing: 0.06em;
+  font-size: rem(17);
+  transition: 0.3s ease;
+}
+//============buttons===========//
+
+%title {
+  font-size: rem(35);
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: $colorText;
+  margin-bottom: rem(25);
+  text-align: center;
+}

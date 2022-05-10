@@ -1,0 +1,97 @@
+.not-only {
+  padding-top: rem(180);
+  display: flex;
+  overflow: hidden;
+  background: $backgroundNotOnly;
+  @media (max-width: $TypeOne) {
+    padding-top: rem(151);
+  }
+  // .not-only__container
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: rem(30);
+    @media (max-width: $TypeOne) {
+      flex-direction: column;
+      align-items: center;
+      row-gap: rem(20);
+    }
+    @media (max-width: $mW4) {
+       row-gap: rem(22);
+    }
+  }
+
+  // .not-only__text
+  &__text {
+    flex: 0 1 53%;
+    padding-bottom: rem(80.5);
+    @media (max-width: $TypeOne) {
+      max-width: rem(460);
+      text-align: center;
+    }
+    @media (max-width: $mW5) {
+      max-width: none;
+      text-align: center;
+    }
+  }
+
+  // .not-only__title
+  &__title {
+    text-align: left;
+    max-width: rem(310);
+    line-height: 130%;
+    color: $colorWhite;
+    font-size: rem(44);
+    margin-bottom: rem(42);
+    @media (max-width: $TypeOne) {
+      margin-bottom: rem(42);
+    }
+    @media (max-width: $mW4) {
+      @include adaptive-value ("font-size", 44, 25, lessContainerRem);
+      @include adaptive-value("max-width", 320, 260, lessContainerRem);
+      margin: 0 auto;
+      text-align: center;
+      letter-spacing: 0.06em;
+    }
+  }
+
+  // .not-only__subtitle
+  &__subtitle {
+    text-align: left;
+    color: $colorHome;
+    line-height: 160%;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: rem(42);
+    @media (max-width: $mW4) {
+      padding-top: rem(42);
+      text-align: center;
+    }
+  }
+
+  &__button {
+    @extend %buttons;
+  }
+
+  // .not-only__image
+  &__image {
+    align-self: flex-end;
+    flex: 1 1 79%;
+    @media (max-width: $TypeOne) {
+      display: flex;
+      justify-content: flex-end;
+      margin-left: rem(8);
+    }
+
+    img {
+      max-width: 100%;
+      @media (max-width: $TypeOne) {
+        max-width: 81.27%;
+        flex: 0 1 100%;
+      }
+      @media (max-width: $mW4) {
+          max-width: 89.9%;
+      }
+    }
+  }
+}
+
